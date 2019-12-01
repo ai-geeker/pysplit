@@ -20,7 +20,7 @@ public:
 			a. pin ya || 1000
 		2. more than one whitespace between the two tokens of bi-gram
 		3. missing cout
-		It is the model trainer's duty to mark sure:
+		It is the model trainer's duty to make sure:
 			ui-gram: "token||1111"
 			bi-gram:"token token||1111"
 	*/

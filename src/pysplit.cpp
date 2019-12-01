@@ -19,7 +19,7 @@ void test_split(PinyinTireTree &pinyinTree, BigramLanguageModel &lm, const char 
 
 void showUsage()
 {
-	printf("pysplit [-intials] test1 test2 test3 ...\n");
+	printf("pysplit [-intials] [-lm lm_mode_file] string1 string2 string3 ...\n");
 	printf("pysplit -h: help\n");
 	printf("pysplit -intials(-i): support split by single intial\n");
 }
