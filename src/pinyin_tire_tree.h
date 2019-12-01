@@ -76,7 +76,7 @@ private:
   TireNode *children_[kMaxPinyinChars] = {};
 };
 
-inline const char *GetLeafTypeName(__in const TireNode::LeafType &leaf_type)
+inline const char *GetLeafTypeName(__In const TireNode::LeafType &leaf_type)
 {
   switch (leaf_type)
   {
@@ -91,7 +91,7 @@ inline const char *GetLeafTypeName(__in const TireNode::LeafType &leaf_type)
   }
 }
 
-inline std::ostream &operator<<(__in std::ostream &os, __in const TireNode::LeafType &leaf_type)
+inline std::ostream &operator<<(__In std::ostream &os, __In const TireNode::LeafType &leaf_type)
 {
   os << GetLeafTypeName(leaf_type);
   return os;
@@ -194,7 +194,7 @@ public:
     }
   }
 
-  bool GetTopN(__out std::list<StringList> &topN, int N = -1)
+  bool GetTopN(__Out std::list<StringList> &topN, int N = -1)
   {
     if (N < 0)
     {
@@ -212,7 +212,7 @@ public:
   }
 
 private:
-  PinyinSpiltResult(__in const std::string &text, const TireNode *root)
+  PinyinSpiltResult(__In const std::string &text, const TireNode *root)
       : s_(text), root_(root)
   {
     first_vowel_pos_ = 0;
@@ -229,7 +229,7 @@ private:
     return true;
   }
 
-  bool IsTokenEnd(__in const TireNode *current, __inout size_t &pinyin_start_index, size_t current_index) const
+  bool IsTokenEnd(__In const TireNode *current, __Inout size_t &pinyin_start_index, size_t current_index) const
   {
     TireNode::LeafType current_leaf_type = current->leafType();
 
@@ -266,7 +266,7 @@ private:
     return return_result.size() > 0;
   }
 
-  void EndSentence(__inout StringList &result)
+  void EndSentence(__Inout StringList &result)
   {
     CLOG << "EndSentence: " << result << std::endl;
     //std::cout << "Find One: " << result << std::endl;
@@ -277,9 +277,9 @@ private:
   }
 
   void BeginToken(
-      __in size_t pinyin_start_index,
-      __inout StringList &result,
-      __out std::list<StringList> &return_result)
+      __In size_t pinyin_start_index,
+      __Inout StringList &result,
+      __Out std::list<StringList> &return_result)
   {
     // get the
     CLOG << "BeginToken: " << s_[pinyin_start_index] << std::endl;
@@ -291,9 +291,9 @@ private:
   }
 
   void EndToken(
-      __in size_t pinyin_start_index,
+      __In size_t pinyin_start_index,
       size_t current_length,
-      __inout StringList &result)
+      __Inout StringList &result)
   {
     CLOG << "EndToken" << std::endl;
     std::string pinpyin = s_.substr(pinyin_start_index, current_length);
@@ -312,11 +312,11 @@ private:
   }
 
   void ProcessToken(
-      __in size_t pinyin_start_index,
+      __In size_t pinyin_start_index,
       size_t current_length,
-      __in const TireNode *current,
-      __inout StringList &result,
-      __out std::list<StringList> &return_result)
+      __In const TireNode *current,
+      __Inout StringList &result,
+      __Out std::list<StringList> &return_result)
   {
     const std::string &s = s_;
     if (current == nullptr)
@@ -352,7 +352,7 @@ private:
     }
   }
 
-  bool PrepareScan(__in const std::string &s)
+  bool PrepareScan(__In const std::string &s)
   {
     /* first, scan the string, find:
       1. if have any invalid char, then return
