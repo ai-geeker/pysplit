@@ -5,10 +5,6 @@
 #include <iostream>
 #include <string>
 
-#ifndef __in
-#define __in
-#endif
-
 #ifndef __out
 #define __out
 #endif
@@ -20,7 +16,7 @@
 const int kMaxPinyinChars = 26;
 typedef std::list<std::string> StringList;
 
-inline std::ostream &operator<<(__in std::ostream &os, __in const StringList &slist)
+inline std::ostream &operator<<(std::ostream &os,  const StringList &slist)
 {
 	for (auto &s : slist)
 	{
